@@ -4,6 +4,7 @@ import Themetoggle from './components/Themetoggle';
 import ThemeContextProvider from './contexts/ThemeContext';
 import AuthContextProvider from './contexts/AuthContext'
 import logo from './logo.svg';
+import ProjectContextProvider from './contexts/ProjectContext';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
         <AuthContextProvider>
 
           <Navbar/>
-          <ProjectList/>
+          <ProjectContextProvider>
+            <ProjectList/>
+          </ProjectContextProvider>
           <Themetoggle/>
           <img src={logo} className="App-logo" alt="logo" />
 

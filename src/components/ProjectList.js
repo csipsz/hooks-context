@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '../contexts/ThemeContext'
+import {ProjectContext} from '../contexts/ProjectContext'
 
 // export class ProjectList extends Component {
 //     static contextType = ThemeContext
@@ -22,10 +23,14 @@ import { ThemeContext } from '../contexts/ThemeContext'
 
 export const ProjectList = () => {
     const {isLightTheme, light, dark} = useContext(ThemeContext);
+    const {projects} = useContext(ProjectContext)
     const theme = isLightTheme ? light : dark
     return (
         <div className='project-list' style={{color: theme.syntax, background: theme.bg}}>
                 <ul>
+                    {projects.map(project => {
+                        return <li key={project.id} style={{background: theme.ui}}>{project.title}</li>
+                    })}
                     <li style={{background: theme.ui}}>CLI</li>
                     <li style={{background: theme.ui}}>Sinatra</li>
                     <li style={{background: theme.ui}}>Rails</li>
